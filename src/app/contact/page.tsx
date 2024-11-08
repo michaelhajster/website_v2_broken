@@ -1,6 +1,8 @@
-import { Mail, Phone, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import ContactForm from "./ContactForm";
 import CalendlyEmbed from "./CalendlyEmbed";
+import ErrorBoundary from "@/components/ErrorBoundary";
+import ContactLinks from "@/components/ContactLinks";
 
 export default function ContactPage() {
   return (
@@ -21,22 +23,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             <div className="card">
               <h2 className="text-2xl font-semibold">Direkte Kontaktaufnahme</h2>
-              <div className="space-y-4">
-                <a 
-                  href="tel:+491777868189" 
-                  className="flex items-center gap-3 text-foreground/70 hover:text-foreground transition-colors"
-                >
-                  <Phone className="h-5 w-5" />
-                  <span>+49 1777 868 189</span>
-                </a>
-                <a 
-                  href="mailto:contact@xahead.com" 
-                  className="flex items-center gap-3 text-foreground/70 hover:text-foreground transition-colors"
-                >
-                  <Mail className="h-5 w-5" />
-                  <span>contact@xahead.com</span>
-                </a>
-              </div>
+              <ContactLinks showIcons className="space-y-4" />
             </div>
 
             {/* Contact Form */}
@@ -49,7 +36,9 @@ export default function ContactPage() {
               <Calendar className="h-6 w-6" />
               <h2 className="text-2xl font-semibold">Termin vereinbaren</h2>
             </div>
-            <CalendlyEmbed />
+            <ErrorBoundary>
+              <CalendlyEmbed />
+            </ErrorBoundary>
           </div>
         </div>
       </main>

@@ -1,21 +1,22 @@
 import { ArrowRight, BookOpen, Bot } from "lucide-react";
+import Button from "@/components/Button";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-16 row-start-2 items-center sm:items-start max-w-4xl">
+    <div className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="max-w-5xl mx-auto space-y-16">
         {/* Hero Section */}
-        <section className="space-y-6 text-center sm:text-left">
+        <section className="space-y-6">
           <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
             Bereiten Sie Ihr Unternehmen auf die Zukunft von AI vor
           </h1>
           
-          <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed">
-            Mit gezielten AI-Strategien und Workshops unterstützen wir Sie dabei, das Potenzial der heutigen AI zu nutzen und auf die Möglichkeiten von morgen vorzubereiten.
+          <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed max-w-3xl">
+            Zukunftssichere AI-Strategien und Lösungen für Ihr Unternehmen
           </p>
           
-          <p className="text-lg text-foreground/70">
-            Bei xahead bieten wir fundierte Beratung für Unternehmen, die bereit sind, AI zu integrieren – von den Grundlagen bis hin zu fortgeschrittenen Lösungen. Wir bringen Klarheit und Innovation in jede Phase Ihrer AI-Reise.
+          <p className="text-lg text-foreground/70 max-w-3xl">
+            xahead ist Ihr Partner für AI – von strategischer Beratung bis zur Entwicklung leistungsstarker Software, die AI direkt in Ihre Prozesse integriert und Ihr Unternehmen voranbringt.
           </p>
         </section>
 
@@ -28,7 +29,7 @@ export default function Home() {
             </div>
             <h2 className="text-2xl font-semibold">Foundation Services</h2>
             <p className="text-foreground/70">
-              Von AI Literacy Workshops bis hin zu Use Case Discovery – wir helfen Ihnen, die Grundlagen zu verstehen und die richtigen Anwendungsfälle zu identifizieren.
+              Von AI-Literacy-Workshops bis hin zur Use Case Discovery – wir helfen Ihnen, die Grundlagen zu verstehen und Anwendungsfälle zu identifizieren, die Ihre strategischen Ziele unterstützen.
             </p>
             <a
               href="/foundation"
@@ -45,7 +46,7 @@ export default function Home() {
             </div>
             <h2 className="text-2xl font-semibold">Advanced Solutions</h2>
             <p className="text-foreground/70">
-              Fortgeschrittene AI-Lösungen wie RAG-Systeme und autonome Agenten für Unternehmen, die mit AI führend sein möchten.
+              Ob autonome Agenten, RAG-Systeme oder maßgeschneiderte Software – unsere fortgeschrittenen AI-Lösungen helfen Unternehmen, die nächste Innovationsstufe zu erreichen und AI direkt in ihre Prozesse zu integrieren.
             </p>
             <a
               href="/advanced"
@@ -58,12 +59,9 @@ export default function Home() {
 
         {/* CTA Buttons */}
         <div className="flex gap-4 items-center flex-col sm:flex-row pt-4">
-          <a
-            href="/contact"
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-6 sm:px-8 min-w-48"
-          >
+          <Button href="/contact" className="w-full sm:w-auto">
             Starten Sie Ihre AI-Reise
-          </a>
+          </Button>
         </div>
       </main>
     </div>

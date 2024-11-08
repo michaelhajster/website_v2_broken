@@ -1,4 +1,5 @@
 import { ArrowRight, BookOpen, Search, Wand2 } from "lucide-react";
+import Button from "@/components/Button";
 
 export default function FoundationPage() {
   return (
@@ -26,7 +27,7 @@ export default function FoundationPage() {
               Verstehen Sie die Grundlagen der AI-Technologie und ihre Anwendungsmöglichkeiten in Ihrem Unternehmen.
             </p>
             <a
-              href="/contact"
+              href="/info-pages/ai-literacy"
               className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all"
             >
               Erweitern Sie Ihre AI Literacy <ArrowRight className="h-4 w-4" />
@@ -43,7 +44,7 @@ export default function FoundationPage() {
               Identifizieren Sie die vielversprechendsten AI-Anwendungsfälle für Ihr Unternehmen.
             </p>
             <a
-              href="/contact"
+              href="/info-pages/use-cases"
               className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all"
             >
               Use Cases entdecken <ArrowRight className="h-4 w-4" />
@@ -60,10 +61,10 @@ export default function FoundationPage() {
               Für Unternehmen, die Generative AI-Anwendungen bereits aktiv erkunden, bieten wir Prompt Optimization. Wir helfen Ihnen, AI-Prompts zu optimieren, um unmittelbaren Mehrwert zu erzielen.
             </p>
             <a
-              href="/contact"
+              href="/info-pages/applied-ai"
               className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all"
             >
-              Applied AI machen <ArrowRight className="h-4 w-4" />
+              Prompt-Ergebnisse optimieren <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </div>
@@ -73,12 +74,9 @@ export default function FoundationPage() {
           <h2 className="text-2xl sm:text-3xl font-semibold">
             Bereit für den nächsten Schritt?
           </h2>
-          <a
-            href="/contact"
-            className="inline-flex items-center justify-center h-12 px-8 min-w-48 rounded-full bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] transition-colors"
-          >
+          <Button href="/contact">
             Kontaktieren Sie uns
-          </a>
+          </Button>
         </section>
       </main>
     </div>

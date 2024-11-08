@@ -7,6 +7,8 @@
   --foreground: #171717;
   --card-hover: #f2f2f2;
   --card-bg: rgba(23, 23, 23, 0.01);
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.16);
 }
 
 .dark {
@@ -14,6 +16,8 @@
   --foreground: #ededed;
   --card-hover: #1a1a1a;
   --card-bg: rgba(237, 237, 237, 0.03);
+  --border-light: rgba(255, 255, 255, 0.24);
+  --border-hover: rgba(255, 255, 255, 0.45);
 }
 
 body {
@@ -23,21 +27,17 @@ body {
 
 @layer components {
   .card {
-    @apply space-y-4 p-6 rounded-xl border transition-colors;
-    border-color: rgb(0 0 0 / 0.08);
+    @apply p-6 rounded-xl border transition-colors;
+    border-color: var(--border-light);
     background-color: var(--card-bg);
   }
 
-  .dark .card {
-    border-color: rgb(255 255 255 / 0.24);
+  .card > * {
+    @apply mb-4 last:mb-0;
   }
 
   .card:hover {
-    border-color: rgb(0 0 0 / 0.16);
-  }
-
-  .dark .card:hover {
-    border-color: rgb(255 255 255 / 0.45);
+    border-color: var(--border-hover);
   }
 }
 

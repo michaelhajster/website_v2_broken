@@ -122,34 +122,73 @@ The platform will be developed using **Next.js**, **Tailwind CSS**, **Shadcn UI 
 The project aims for minimal files without compromising clarity.
 
 ```
-xahead-website
+xahead-website/
+├── src/
+│   ├── app/
+│   │   ├── foundation/
+│   │   │   └── page.tsx                  # Foundation Services page
+│   │   │                                 # Contains cards with buttons that link to:
+│   │   │                                 # - AI Literacy Workshop button → /info-pages/ai-literacy
+│   │   │                                 # - Use Case Discovery button → /info-pages/use-cases
+│   │   │                                 # - Prompt Optimization button → /info-pages/applied-ai
+│   │   │                                 # Each button should lead to its respective informational page.
+│   │
+│   │   ├── advanced/
+│   │   │   └── page.tsx                  # Advanced Solutions page
+│   │   │                                 # Contains cards with buttons that link to:
+│   │   │                                 # - RAG Systeme entdecken button → /info-pages/rag
+│   │   │                                 # - AI Agents implementieren button → /info-pages/autonomous-agents
+│   │   │                                 # Each button should lead to its respective informational page.
+│   │
+│   │   ├── contact/
+│   │   │   ├── page.tsx                  # Main Contact page
+│   │   │   ├── ContactForm.tsx
+│   │   │   └── CalendlyEmbed.tsx
+│   │
+│   │   ├── info-pages/                   # Folder for informational subpages
+│   │   │                                 # These pages are not shown in header navigation; accessed only through buttons on foundation/advanced pages
+│   │   │
+│   │   │   ├── ai-literacy.tsx           # AI Literacy info page
+│   │   │   │                             # Includes a "Contact Us" button → redirects to /contact
+│   │   │
+│   │   │   ├── use-cases.tsx             # Use Cases info page
+│   │   │   │                             # Includes a "Contact Us" button → redirects to /contact
+│   │   │
+│   │   │   ├── applied-ai.tsx            # Applied AI info page
+│   │   │   │                             # Includes a "Contact Us" button → redirects to /contact
+│   │   │
+│   │   │   ├── rag.tsx                   # Retrieval-Augmented Generation (RAG) info page
+│   │   │   │                             # Includes a "Contact Us" button → redirects to /contact
+│   │   │
+│   │   │   └── autonomous-agents.tsx     # Autonomous AI Agents info page
+│   │   │                                 # Includes a "Contact Us" button → redirects to /contact
+│   │
+│   │   ├── about/
+│   │   │   └── page.tsx                  # About Us page (visible in header navigation)
+│   │
+│   │   ├── impressum/
+│   │   │   └── page.tsx                  # Impressum page (linked only in footer for legal purposes)
+│   │
+│   │   ├── layout.tsx
+│   │   └── page.tsx                      # Home page
+│   │
+│   ├── components/
+│   │   ├── Button.tsx                    # Button component, reusable across cards
+│   │   ├── ContactLinks.tsx
+│   │   ├── ErrorBoundary.tsx
+│   │   ├── Footer.tsx                    # Footer with link to Impressum
+│   │   ├── Header.tsx                    # Header with link to About Us only
+│   │   └── ThemeToggle.tsx
+│   │
+│   └── styles/
+│       └── globals.css
+│
+├── public/
+│   └── images/
 ├── package.json
 ├── next.config.js
 ├── postcss.config.js
-├── tailwind.config.js
-├── .env.local
-├── public
-│   ├── favicon.ico
-│   └── images
-│       └── logo.png
-├── styles
-│   └── globals.css              // Global styles using Tailwind CSS
-├── pages
-│   ├── _app.js                  // Custom App component
-│   ├── index.js                 // Homepage
-│   ├── foundation.js            // Foundation Services Page
-│   ├── advanced.js              // Advanced Solutions Page
-│   └── contact.js               // Contact and Booking Page
-├── components                   // Reusable components
-│   ├── Header.js                // Navigation header
-│   ├── Footer.js                // Footer section
-│   ├── HeroSection.js           // Homepage hero section
-│   ├── ServiceHighlight.js      // Service overview cards
-│   ├── ServiceDetail.js         // Detailed service information
-│   ├── CTAButton.js             // Call-to-action buttons
-│   ├── ContactForm.js           // Contact form component
-│   ├── CalendlyWidget.js        // Calendly integration component
-│   └── PaymentButton.js         // Stripe payment button - we will not use this yet
+└── tailwind.config.js
 ```
 
 ---

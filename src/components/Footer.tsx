@@ -1,6 +1,12 @@
+'use client';
+
+import ContactLinks from "./ContactLinks";
+
 export default function Footer() {
+  const year = new Date().getFullYear();
+  
   return (
-    <footer className="w-full border-t border-black/[.08] dark:border-white/[.24] mt-auto">
+    <footer className="w-full border-t transition-colors border-[--border-light] mt-auto">
       <div className="max-w-5xl mx-auto px-8 py-12 sm:px-20">
         <div className="grid gap-8 sm:grid-cols-3">
           {/* Company Info */}
@@ -30,19 +36,18 @@ export default function Footer() {
           {/* Contact */}
           <div className="space-y-4">
             <h3 className="font-semibold">Kontakt</h3>
-            <div className="space-y-2">
-              <a href="mailto:contact@xahead.com" className="block text-sm text-foreground/70 hover:text-foreground transition-colors">
-                contact@xahead.com
-              </a>
-              <a href="tel:+491777868189" className="block text-sm text-foreground/70 hover:text-foreground transition-colors">
-                +49 1777 868 189
-              </a>
-            </div>
+            <ContactLinks />
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-black/[.08] dark:border-white/[.24] text-sm text-foreground/70">
-          <p>© {new Date().getFullYear()} xahead. Alle Rechte vorbehalten.</p>
+        <div className="mt-12 pt-8 border-t transition-colors border-[--border-light] text-sm text-foreground/70 flex justify-between items-center">
+          <p>© {year} xahead. Alle Rechte vorbehalten.</p>
+          <a 
+            href="/impressum" 
+            className="hover:text-foreground transition-colors"
+          >
+            Impressum
+          </a>
         </div>
       </div>
     </footer>

@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState<boolean | null>(null);
   const pathname = usePathname();
 
   // Handle dark mode initialization
@@ -27,6 +27,11 @@ export default function Header() {
     }
   }, []);
 
+  // Don't render theme toggle until we know the initial state
+  if (isDark === null) {
+    return null; // Or a loading state if preferred
+  }
+
   const toggleDarkMode = () => {
     const newMode = !isDark;
     setIsDark(newMode);
@@ -38,11 +43,12 @@ export default function Header() {
     { href: '/', label: 'Home' },
     { href: '/foundation', label: 'Foundation Services' },
     { href: '/advanced', label: 'Advanced Solutions' },
+    { href: '/about', label: 'About Us' },
     { href: '/contact', label: 'Contact' },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-black/[.08] dark:border-white/[.08]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b transition-colors border-[--border-light]">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -69,11 +75,7 @@ export default function Header() {
             className="p-2 hover:bg-foreground/[.08] rounded-full transition-colors"
             aria-label="Toggle dark mode"
           >
-            {isDark ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
+            {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
         </nav>
 
@@ -84,28 +86,20 @@ export default function Header() {
             className="p-2 hover:bg-foreground/[.08] rounded-full transition-colors"
             aria-label="Toggle dark mode"
           >
-            {isDark ? (
-              <Sun className="h-5 w-5" />
-            ) : (
-              <Moon className="h-5 w-5" />
-            )}
+            {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 hover:bg-foreground/[.08] rounded-full transition-colors"
             aria-label="Toggle menu"
           >
-            {isMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-background border-b border-black/[.08] dark:border-white/[.08] md:hidden">
+          <div className="absolute top-16 left-0 right-0 bg-background border-b transition-colors border-[--border-light] md:hidden">
             <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
               {navItems.map((item) => (
                 <Link
