@@ -1,101 +1,71 @@
-import Image from "next/image";
+import { ArrowRight, BookOpen, Bot } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      <main className="flex flex-col gap-16 row-start-2 items-center sm:items-start max-w-4xl">
+        {/* Hero Section */}
+        <section className="space-y-6 text-center sm:text-left">
+          <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
+            Bereiten Sie Ihr Unternehmen auf die Zukunft von AI vor
+          </h1>
+          
+          <p className="text-xl sm:text-2xl text-foreground/80 leading-relaxed">
+            Mit gezielten AI-Strategien und Workshops unterstützen wir Sie dabei, das Potenzial der heutigen AI zu nutzen und auf die Möglichkeiten von morgen vorzubereiten.
+          </p>
+          
+          <p className="text-lg text-foreground/70">
+            Bei xahead bieten wir fundierte Beratung für Unternehmen, die bereit sind, AI zu integrieren – von den Grundlagen bis hin zu fortgeschrittenen Lösungen. Wir bringen Klarheit und Innovation in jede Phase Ihrer AI-Reise.
+          </p>
+        </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+        {/* Service Highlights */}
+        <section className="w-full grid gap-8 sm:grid-cols-2">
+          {/* Foundation Services */}
+          <div className="card">
+            <div className="h-12 w-12 rounded-full bg-foreground/[.08] flex items-center justify-center">
+              <BookOpen className="h-6 w-6" />
+            </div>
+            <h2 className="text-2xl font-semibold">Foundation Services</h2>
+            <p className="text-foreground/70">
+              Von AI Literacy Workshops bis hin zu Use Case Discovery – wir helfen Ihnen, die Grundlagen zu verstehen und die richtigen Anwendungsfälle zu identifizieren.
+            </p>
+            <a
+              href="/foundation"
+              className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all"
+            >
+              Foundation Services entdecken <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          {/* Advanced Solutions */}
+          <div className="card">
+            <div className="h-12 w-12 rounded-full bg-foreground/[.08] flex items-center justify-center">
+              <Bot className="h-6 w-6" />
+            </div>
+            <h2 className="text-2xl font-semibold">Advanced Solutions</h2>
+            <p className="text-foreground/70">
+              Fortgeschrittene AI-Lösungen wie RAG-Systeme und autonome Agenten für Unternehmen, die mit AI führend sein möchten.
+            </p>
+            <a
+              href="/advanced"
+              className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all"
+            >
+              Advanced Solutions erkunden <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </section>
+
+        {/* CTA Buttons */}
+        <div className="flex gap-4 items-center flex-col sm:flex-row pt-4">
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-6 sm:px-8 min-w-48"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            Starten Sie Ihre AI-Reise
           </a>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

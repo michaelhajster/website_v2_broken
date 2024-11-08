@@ -5,17 +5,44 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card-hover: #f2f2f2;
+  --card-bg: rgba(23, 23, 23, 0.01);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #111111;
+  --foreground: #ededed;
+  --card-hover: #1a1a1a;
+  --card-bg: rgba(237, 237, 237, 0.03);
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .card {
+    @apply space-y-4 p-6 rounded-xl border transition-colors;
+    border-color: rgb(0 0 0 / 0.08);
+    background-color: var(--card-bg);
+  }
+
+  .dark .card {
+    border-color: rgb(255 255 255 / 0.24);
+  }
+
+  .card:hover {
+    border-color: rgb(0 0 0 / 0.16);
+  }
+
+  .dark .card:hover {
+    border-color: rgb(255 255 255 / 0.45);
+  }
+}
+
+@layer utilities {
+  .hover\:gap-3:hover {
+    gap: 0.75rem;
+  }
 }
