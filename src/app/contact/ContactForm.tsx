@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useState } from "react";
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
 const formSchema = z.object({
   name: z.string().min(2, "Name muss mindestens 2 Zeichen lang sein"),
@@ -14,6 +16,9 @@ const formSchema = z.object({
 
 const inputClasses = "w-full px-4 py-2 rounded-lg border border-black/[.08] dark:border-white/[.24] hover:border-black/[.16] dark:hover:border-white/[.45] bg-white/[.03] dark:bg-white/[.08] focus:outline-none focus:ring-2 focus:ring-foreground/20 transition-colors text-foreground dark:text-white placeholder:text-foreground/70 dark:placeholder:text-white/70";
 
+// Define the form data type based on your schema
+type FormData = z.infer<typeof formSchema>;
+
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -23,14 +28,17 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await addDoc(collection(db, 'contactSubmissions'), {
+        ...data,
+        timestamp: new Date().toISOString(),
+      });
       setSubmitSuccess(true);
       reset();
     } catch (error) {
@@ -54,7 +62,7 @@ export default function ContactForm() {
             placeholder="Ihr Name"
           />
           {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.name.message as string}</p>
           )}
         </div>
 
@@ -69,7 +77,7 @@ export default function ContactForm() {
             placeholder="ihre@email.com"
           />
           {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.email.message as string}</p>
           )}
         </div>
 
@@ -84,7 +92,7 @@ export default function ContactForm() {
             placeholder="Ihr Unternehmen"
           />
           {errors.company && (
-            <p className="text-red-500 text-sm mt-1">{errors.company.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.company.message as string}</p>
           )}
         </div>
 
@@ -99,7 +107,7 @@ export default function ContactForm() {
             placeholder="Wie können wir Ihnen helfen?"
           />
           {errors.message && (
-            <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.message.message as string}</p>
           )}
         </div>
       </div>
